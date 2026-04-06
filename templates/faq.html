@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | EMS</title>
+    <link rel="stylesheet" th:href="@{/CSS/faq.css}">
+</head>
+
+<body>
+    <!-- ✅ Background Elements -->
+    <div class="bg-image"></div>
+    <div class="bg-overlay"></div>
+
+    <!-- Header Fragment -->
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="faq-wrapper">
+        <h1>Frequently Asked Questions</h1>
+        <p>Find answers to common questions about our Employee Management System.</p>
+
+        <div class="faq-grid">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>👥 What is Employee Management System (EMS)?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    EMS is a comprehensive digital platform used to manage employee records, attendance tracking, salary processing, leave requests, performance feedback, and HR operations efficiently.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>🎯 Who can use this system?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <strong>Admins:</strong> Full system access<br>
+                    <strong>HR Managers:</strong> Employee management & reports<br>
+                    <strong>Employees:</strong> Personal profile, leave & feedback
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>🔐 Is login required?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    Yes! Secure login is mandatory to protect employee data and maintain system integrity. Use your registered credentials to access.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>📅 Can employees apply for leave online?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    ✅ <strong>Yes!</strong> Employees can:<br>
+                    - Submit leave requests instantly<br>
+                    - Track approval status<br>
+                    - View leave balance<br>
+                    - Get notifications
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>💰 How is salary managed?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <strong>Complete Payroll Solution:</strong><br>
+                    - Automated salary calculation<br>
+                    - Tax & PF deductions<br>
+                    - Allowances & bonuses<br>
+                    - Digital payslip generation<br>
+                    - Payment history
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>📊 Can I generate reports?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    Yes! Generate various reports:<br>
+                    - Attendance summary<br>
+                    - Leave analytics<br>
+                    - Salary reports<br>
+                    - Performance metrics<br>
+                    - Export to PDF/Excel
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Fragment -->
+    <div th:replace="fragments/footer :: footer"></div>
+
+    <!-- Popup -->
+    <div class="popup-overlay" id="popup">
+        <div class="popup-box">
+            <h3>⚠️ Login Required</h3>
+            <p>Please login first to access protected features.</p>
+            <a href="/login" class="btn-popup">🔐 Login Now</a>
+        </div>
+    </div>
+
+<script>
+// Inline JS - Backup (agar external file nahi load ho)
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-item').forEach(function(faqItem) {
+        faqItem.addEventListener('click', function() {
+            const isActive = this.classList.contains('active');
+            
+            document.querySelectorAll('.faq-item').forEach(function(item) {
+                item.classList.remove('active');
+                const icon = item.querySelector('.faq-icon');
+                const answer = item.querySelector('.faq-answer');
+                icon.textContent = '+';
+                answer.style.maxHeight = '0px';
+            });
+            
+            if (!isActive) {
+                this.classList.add('active');
+                const icon = this.querySelector('.faq-icon');
+                const answer = this.querySelector('.faq-answer');
+                icon.textContent = '−';
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Salary Status</title>
+
+<link rel="stylesheet" th:href="@{/CSS/User panel/Employee_Salary.css}">
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- Sidebar -->
+    <div th:replace="fragments/User Panel/header :: userHeader"></div>
+
+    <div class="main">
+
+        <!-- Navbar -->
+        <div class="navbar">
+
+            <div class="logo">Salary Status</div>
+
+            <!-- Dynamic user -->
+            <div class="user" id="userInfo">
+                Loading...
+            </div>
+
+        </div>
+
+        <!-- Salary Card -->
+        <div class="salary-card">
+
+            <h1>Salary Status</h1>
+
+            <!-- Employee Info -->
+            <div class="info-grid">
+
+                <div class="box">
+                    <span>Employee ID</span>
+                    <h3 id="empId">Loading...</h3>
+                </div>
+
+                <div class="box">
+                    <span>Employee Name</span>
+                    <h3 id="empName">Loading...</h3>
+                </div>
+
+                <div class="box">
+                    <span>Department</span>
+                    <h3 id="department">Loading...</h3>
+                </div>
+
+            </div>
+
+            <!-- Salary Table -->
+            <table class="salary-table">
+
+                <tr>
+                    <th>Component</th>
+                    <th>Amount (₹)</th>
+                </tr>
+
+                <tr>
+                    <td>Base Salary</td>
+                    <td id="base">0</td>
+                </tr>
+
+                <tr>
+                    <td>Allowances</td>
+                    <td id="allow">0</td>
+                </tr>
+
+                <tr>
+                    <td>Deductions</td>
+                    <td id="deduct">0</td>
+                </tr>
+
+            </table>
+
+            <!-- Progress Bar -->
+            <div class="progress-row">
+
+                <div class="progress">
+                    <div class="bar" id="bar"></div>
+                </div>
+
+            </div>
+
+            <!-- Net Salary -->
+            <div class="net-box">
+                <span>Net Salary</span>
+                <span id="net">₹ 0</span>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div th:replace="fragments/User Panel/footer :: userFooter"></div>
+
+    </div>
+
+</div>
+
+<script th:src="@{/JavaScript/User panel/Employee_Salary.js}"></script>
+
+</body>
+</html>

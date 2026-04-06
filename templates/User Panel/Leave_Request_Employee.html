@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leave Request</title>
+
+<link rel="stylesheet" th:href="@{/CSS/User panel/Leave_Request_Employee.css}">
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- Sidebar -->
+    <div th:replace="fragments/User Panel/header :: userHeader"></div>
+
+    <!-- Main -->
+    <div class="main">
+
+        <div class="topbar">
+            <h2>Leave Request</h2>
+            <div class="user">
+                <span th:text="${empName}">Employee Name</span> • 
+                <span th:text="${empId}">EMPID</span>
+            </div>
+        </div>
+
+        <div class="leave-box">
+            <h3>Apply for Leave</h3>
+
+
+
+<form id="leaveForm">
+    <div class="form-group">
+    <label>Employee ID</label>
+    <input type="text" id="empId" th:value="${empId}" readonly>
+</div>
+
+<div class="form-group">
+    <label>Employee Name</label>
+    <input type="text" id="empName" th:value="${empName}" readonly>
+</div>
+
+<div class="form-group">
+    <label>Department</label>
+    <input type="text" id="dept" th:value="${department}" readonly>
+</div>
+
+    <!-- Rest of form stays same -->
+    <div class="form-group">
+        <label>Leave Type</label>
+        <select id="leaveType" required>
+            <option value="">Select Leave Type</option>
+            <option value="Casual Leave">Casual Leave</option>
+            <option value="Sick Leave">Sick Leave</option>
+            <option value="Paid Leave">Paid Leave</option>
+            <option value="Emergency Leave">Emergency Leave</option>
+        </select>
+    </div>
+
+                <div class="form-group">
+                    <label>From Date</label>
+                    <input type="date" id="fromDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label>To Date</label>
+                    <input type="date" id="toDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Reason</label>
+                    <textarea id="reason" placeholder="Enter reason for leave" required></textarea>
+                </div>
+
+                <div class="buttons">
+                    <button type="submit">Submit Request</button>
+                    <button type="reset" class="reset">Reset</button>
+                </div>
+
+            </form>
+
+            <!-- Leave Status -->
+            <div class="status-box" id="statusBox">
+                <h3>Leave Status</h3>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div th:replace="fragments/User Panel/footer :: userFooter"></div>
+
+    </div>
+
+</div>
+
+<script th:src="@{/JavaScript/User panel/Leave_Request_Employee.js}"></script>
+
+</body>
+</html>

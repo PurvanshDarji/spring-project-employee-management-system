@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | EMS System</title>
+    <link rel="stylesheet" th:href="@{/CSS/login.css}">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Background -->
+    <div class="bg-image"></div>
+    <div class="bg-overlay"></div>
+
+    <div class="container">
+        <!-- LEFT SIDE -->
+        <div class="left-panel">
+            <div class="shapes">
+                <div class="shape purple">
+                    <div class="eyes">
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="mouth"></div>
+                </div>
+                <div class="shape black">
+                    <div class="eyes">
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="shape yellow">
+                    <div class="eyes">
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="mouth"></div>
+                </div>
+                <div class="shape orange">
+                    <div class="eyes">
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="mouth"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="right-panel">
+            <div class="login-box" id="loginBox">
+                <h1>Welcome back!</h1>
+                <p>Please enter your details</p>
+
+                <!-- Phone Number -->
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="text" id="username" autocomplete="off" placeholder="Enter phone number">
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label>Password</label>
+                    <div class="password-field">
+                        <input type="password" id="password" placeholder="Enter password">
+                        <span class="toggle" onclick="togglePass()">👁</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="rememberMe">
+                        <span class="checkmark"></span>
+                        Remember for 30 days
+                    </label>
+                    <a href="/forgot-password">Forgot password?</a>
+                </div>
+
+                <!-- LOGIN BUTTON -->
+                <button onclick="login()" type="button" id="loginBtn">Log In</button>
+
+                <!-- 🔥 ERROR DISPLAY -->
+                <div th:if="${error}" class="error" style="display: block !important; opacity: 1;">
+                    [[${error}]]
+                </div>
+                <div class="error" id="error" style="display: none;"></div>
+
+                <!-- Home Button -->
+                <a href="/" class="home-btn">
+                    <button type="button">🏠 Back to Home</button>
+                </a>
+
+                <div class="signup">
+                    Don't have an account? <a href="/register">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer - FIXED SYNTAX -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <!-- COMPLETE JS -->
+    <script th:src="@{/JavaScript/login.js}"></script>
+</body>
+</html>

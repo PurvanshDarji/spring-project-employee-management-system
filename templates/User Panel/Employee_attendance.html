@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attendance System | EMS</title>
+<link rel="stylesheet" th:href="@{/CSS/User Panel/attendance.css}">
+</head>
+<body>
+
+<div class="layout">
+
+    <div th:replace="fragments/User Panel/header :: userHeader"></div>
+
+    <div class="main">
+
+        <div class="topbar">
+            <h2>Attendance System</h2>
+            <!-- ✅ Dynamic naam aur empId -->
+            <div class="user">
+                <span th:text="${empName}">Rahul Sharma</span> •
+                <span th:text="${empId}">EMP1025</span>
+            </div>
+        </div>
+
+        <div class="attendance-box">
+
+            <div class="punch-box">
+    <div class="status">
+        Status: <span id="todayStatus">Not Marked</span>
+    </div>
+    <div class="btn-group">
+        <button id="punchInBtn"  class="in"    onclick="punchIn()">Punch In</button>
+        <button id="breakInBtn"  class="break" onclick="breakStart()" disabled>Break</button>
+        <button id="breakOutBtn" class="break-end" onclick="breakEnd()" disabled>Break End</button>
+        <button id="punchOutBtn" class="out"   onclick="punchOut()" disabled>Punch Out</button>
+    </div>
+</div>
+
+            <div class="summary">
+                <div class="sum-card"><h3 id="p">0</h3><span>Present</span></div>
+                <div class="sum-card"><h3 id="a">0</h3><span>Absent</span></div>
+                <div class="sum-card"><h3 id="l">0</h3><span>Leave</span></div>
+                <div class="sum-card"><h3 id="per">0%</h3><span>Attendance %</span></div>
+            </div>
+
+            <table id="table"></table>
+
+        </div>
+
+        <div th:replace="fragments/User Panel/footer :: userFooter"></div>
+
+    </div>
+
+</div>
+
+<!-- ✅ JS ke liye empId hidden -->
+<input type="hidden" id="empIdField" th:value="${empId}">
+
+<script th:src="@{/JavaScript/User Panel/attendance.js}"></script>
+
+</body>
+</html>

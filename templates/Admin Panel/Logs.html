@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Logs | EMS Admin</title>
+
+
+<link rel="stylesheet" th:href="@{/CSS/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/CSS/Admin Panel/Logs.css}">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- Admin Sidebar Fragment -->
+    <div th:replace="fragments/Admin Panel/header :: adminHeader"></div>
+
+    <!-- Main -->
+    <div class="main">
+
+        <div class="topbar">
+            <h1>System Logs</h1>
+            <span>Audit Trail & Security Monitoring</span>
+        </div>
+
+        <div class="card">
+
+            <div class="controls">
+                <input type="text" id="search" placeholder="Search logs...">
+                <select id="filter" onchange="filterLogs()">
+                    <option value="all">All Activities</option>
+                    <option value="login">Login</option>
+                    <option value="update">Update</option>
+                    <option value="delete">Delete</option>
+                    <option value="approve">Approve</option>
+                    <option value="reject">Reject</option>
+                </select>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>User</th>
+                        <th>Activity</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody id="logTable"></tbody>
+            </table>
+
+        </div>
+
+        <!-- Admin Footer Fragment -->
+        <div th:replace="fragments/Admin Panel/footer :: adminFooter"></div>
+
+    </div>
+
+</div>
+
+<script th:src="@{/JavaScript/Admin Panel/Logs.js}"></script>
+
+</body>
+</html>

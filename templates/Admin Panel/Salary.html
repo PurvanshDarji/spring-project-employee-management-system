@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salary Management | EMS Admin</title>
+
+
+<link rel="stylesheet" th:href="@{/CSS/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/CSS/Admin Panel/Salary.css}">
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- Admin Sidebar Fragment -->
+    <div th:replace="fragments/Admin Panel/header :: adminHeader"></div>
+
+    <!-- Main -->
+    <div class="main">
+
+        <div class="topbar">
+            <h1>Salary Management</h1>
+            <span>Payroll Dashboard</span>
+        </div>
+
+        <div class="grid">
+
+            <!-- Salary Entry -->
+            <div class="card">
+                <h2>Salary Entry</h2>
+
+                <div class="form-group">
+                    <label>Employee Name</label>
+                    <select id="emp" required>
+                        <option value="">Select Employee</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Department</label>
+                    <select id="dept" required>
+                        <option value="">Select department</option>
+                        <option>IT</option>
+                        <option>HR</option>
+                        <option>Finance</option>
+                        <option>Marketing</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Base Salary (₹)</label>
+                    <input type="number" id="base" placeholder="Enter base salary" oninput="calcSalary()" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Allowances (₹)</label>
+                    <input type="number" id="allow" placeholder="Enter allowances" oninput="calcSalary()">
+                </div>
+
+                <div class="form-group">
+                    <label>Deductions (₹)</label>
+                    <input type="number" id="deduct" placeholder="Enter deductions" oninput="calcSalary()">
+                </div>
+
+                <div class="salary-box">
+                    <strong>Net Salary:</strong>
+                    <span id="net">₹ 0</span>
+                </div>
+
+                <br>
+                <button type="button" class="btn" onclick="saveSalary()">Save Salary</button>
+            </div>
+
+            <!-- Salary Table -->
+            <div class="card">
+                <h2>Salary Records</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Employee</th>
+                            <th>Department</th>
+                            <th>Base</th>
+                            <th>Allow</th>
+                            <th>Deduct</th>
+                            <th>Net</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="salaryTable"></tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <!-- Admin Footer Fragment -->
+        <div th:replace="fragments/Admin Panel/footer :: adminFooter"></div>
+
+    </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script th:src="@{/JavaScript/Admin Panel/Salary.js}"></script>
+
+</body>
+</html>

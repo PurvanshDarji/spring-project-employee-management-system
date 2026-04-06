@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Dashboard</title>
+
+<link rel="stylesheet" th:href="@{/CSS/User panel/Employee_dashboard.css}">
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- User Panel Sidebar Fragment -->
+    <div th:replace="fragments/User Panel/header :: userHeader"></div>
+
+    <!-- Main -->
+    <div class="main">
+
+        <div class="topbar">
+            <h2>Employee Dashboard</h2>
+            <div>
+    <span class="clock" id="clock"></span> • 
+    <span class="user">
+        <span th:text="${empName}">Employee Name</span> • 
+        <span th:text="${empId}">EMP0</span>
+    </span>
+</div>
+        </div>
+
+        <!-- Cards -->
+        <div class="cards">
+
+<div class="card">
+<h3 th:text="${present}">0</h3>
+<span>Present Days</span>
+</div>
+
+<div class="card">
+<h3 th:text="${absent}">0</h3>
+<span>Absent Days</span>
+</div>
+
+<div class="card">
+<h3 th:text="${leave}">0</h3>
+<span>Leave Requests</span>
+</div>
+
+<div class="card">
+<h3>₹ <span th:text="${salary}">0</span></h3>
+<span>Monthly Salary</span>
+</div>
+
+</div>
+
+        <!-- Welcome -->
+        <div class="welcome">
+            <h3 id="greet">Welcome 👋</h3>
+            <p>
+                This smart employee dashboard provides real-time insights into your attendance,
+                salary, leave status, and profile management.
+            </p>
+        </div>
+
+        <!-- User Panel Footer Fragment -->
+        <div th:replace="fragments/User Panel/footer :: userFooter"></div>
+
+    </div>
+
+</div>
+
+<script th:src="@{/JavaScript/User panel/Employee_dashboard.js}"></script>
+
+</body>
+</html>

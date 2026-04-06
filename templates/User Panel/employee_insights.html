@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Insights | EMS Employee</title>
+<link rel="stylesheet" th:href="@{/CSS/User panel/employee_insights.css}">
+</head>
+<body>
+
+<div class="layout">
+
+    <div th:replace="fragments/User Panel/header :: userHeader"></div>
+
+    <div class="main">
+
+        <div class="topbar">
+            <h2>My Performance Insights</h2>
+            <strong th:text="${empName}">Rahul Sharma</strong>
+        </div>
+
+        <!-- ✅ Cards — database se -->
+        <div class="cards">
+            <div class="card">
+                <h3>Attendance %</h3>
+                <p id="att" th:text="${attPercent} + '%'">0%</p>
+            </div>
+            <div class="card">
+                <h3>Leave Used</h3>
+                <p id="leave" th:text="${leaveUsed}">0</p>
+            </div>
+            <div class="card">
+                <h3>Performance</h3>
+                <p id="perf" th:text="${perfPercent} + '%'">0%</p>
+            </div>
+            <div class="card">
+                <h3>Task Completion</h3>
+                <p id="salary" th:text="${taskPercent} + '%'">0%</p>
+            </div>
+        </div>
+
+        <div class="grid">
+
+            <!-- ✅ Progress Bars -->
+            <div class="section">
+                <h3>Monthly Performance Progress</h3>
+
+                <h4>Attendance</h4>
+                <div class="progress-bar">
+                    <div class="progress-fill green"
+                         th:style="'width:' + ${attPercent} + '%'"
+                         th:attr="data-value=${attPercent}"
+                         th:text="${attPercent} + '%'">0%</div>
+                </div>
+
+                <h4>Task Completion</h4>
+                <div class="progress-bar">
+                    <div class="progress-fill orange"
+                         th:style="'width:' + ${taskPercent} + '%'"
+                         th:attr="data-value=${taskPercent}"
+                         th:text="${taskPercent} + '%'">0%</div>
+                </div>
+
+                <h4>Overall Rating</h4>
+                <div class="progress-bar">
+                    <div class="progress-fill green"
+                         th:style="'width:' + ${perfPercent} + '%'"
+                         th:attr="data-value=${perfPercent}"
+                         th:text="${perfPercent} + '%'">0%</div>
+                </div>
+
+                <!-- ✅ Mini Stats -->
+                <div class="mini-stats">
+                    <span>✅ Present: <b th:text="${present}">0</b></span>
+                    <span>❌ Absent: <b th:text="${absent}">0</b></span>
+                    <span>⚠️ Half Day: <b th:text="${halfDay}">0</b></span>
+                    <span>📅 Total: <b th:text="${totalDays}">0</b></span>
+                </div>
+            </div>
+
+            <!-- ✅ Achievements — database se -->
+            <div class="section">
+                <h3>Achievements &amp; Highlights</h3>
+                <ul class="list">
+                    <li th:each="a : ${achievements}" th:text="${a}">Achievement</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div th:replace="fragments/User Panel/footer :: userFooter"></div>
+
+    </div>
+</div>
+
+<script th:src="@{/JavaScript/User panel/employee_insights.js}"></script>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Feedback</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/CSS/User panel/Employy_Feedback.css}">
+</head>
+
+<body>
+<div class="layout">
+    <!-- User Panel Sidebar Fragment -->
+    <div th:replace="~{fragments/User Panel/header :: userHeader}"></div>
+
+    <!-- Main -->
+    <div class="main">
+        <div class="topbar">
+            <h2><i class="fas fa-comments"></i> Employee Feedback</h2>
+            <div class="user" id="userDisplay">
+                <i class="fas fa-user-circle"></i> Loading...
+            </div>
+        </div>
+
+        <div class="feedback-box">
+            <h3><i class="fas fa-lightbulb"></i> Send Feedback / Suggestion</h3>
+
+            <form id="feedbackForm">
+                <!-- Auto-fill Section (Read-only) -->
+                <div class="auto-fill-section">
+                    <h4> Your Profile</h4>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label> Employee ID</label>
+                            <input type="text" id="empId" readonly class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-user"></i> Name</label>
+                            <input type="text" id="empName" readonly class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Current Department</label>
+                            <input type="text" id="currentDept" readonly class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Department Selection -->
+                <div class="form-group">
+                    <label> Select Department <span style="color: #666;">(Optional)</span></label>
+                    <select id="departmentId" class="form-select">
+                         <option value="">Choose department</option>
+    <option value="HR">HR</option>
+    <option value="IT">IT</option>
+    <option value="Sales">Sales</option>
+                    </select>
+                </div>
+
+                <!-- Subject -->
+                <div class="form-group">
+                    <label><i class="fas fa-tag"></i> Subject <span style="color: red;">*</span></label>
+                    <input type="text" id="subject" class="form-control" 
+                           placeholder="Enter a clear subject (max 200 chars)" 
+                           required maxlength="200">
+                    <small class="text-muted">Max 200 characters</small>
+                </div>
+
+                <!-- Message -->
+                <div class="form-group">
+                    <label><i class="fas fa-edit"></i> Your Feedback / Suggestion <span style="color: red;">*</span></label>
+                    <textarea id="message" class="form-control" 
+                              placeholder="Share your feedback, suggestions, or concerns..." 
+                              required maxlength="1000" rows="6"></textarea>
+                    <div class="char-counter">
+                        <small id="charCounter" class="text-muted">0/1000 characters</small>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" id="submitBtn" class="btn-primary w-100">
+                    <i class="fas fa-paper-plane"></i> Submit Feedback
+                </button>
+            </form>
+
+            <!-- Alert Messages -->
+            <div id="successMsg" class="alert alert-success" style="display: none;">
+                <i class="fas fa-check-circle"></i>
+                <span></span>
+            </div>
+            <div id="errorMsg" class="alert alert-error" style="display: none;">
+                <i class="fas fa-exclamation-circle"></i>
+                <span></span>
+            </div>
+        </div>
+
+        <!-- User Panel Footer Fragment -->
+        <div th:replace="~{fragments/User Panel/footer :: userFooter}"></div>
+    </div>
+</div>
+
+<!-- Updated JavaScript -->
+<script th:src="@{/JavaScript/User panel/Employy_Feedback.js}"></script>
+</body>
+</html>

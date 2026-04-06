@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Notice Board | Admin</title>
+<link rel="stylesheet" th:href="@{/CSS/Admin Panel/Notices.css}">
+</head>
+<body>
+
+<div class="layout">
+    <div th:replace="fragments/Admin Panel/header :: adminHeader"></div>
+
+    <div class="main">
+        <div class="topbar">
+            <h1>Notice Board</h1>
+            <button class="btn-post" onclick="openModal()">+ Post Notice</button>
+        </div>
+
+        <!-- Notices List -->
+        <div class="notices-grid">
+            <div th:each="n : ${notices}" class="notice-card"
+                 th:classappend="${n.category == 'Urgent'} ? ' urgent' : ' general'">
+                <div class="notice-header">
+                    <span class="badge" th:text="${n.category}">General</span>
+                    <button class="btn-delete"
+                            th:onclick="'deleteNotice(' + ${n.id} + ')'">🗑</button>
+                </div>
+                <h3 th:text="${n.title}">Title</h3>
+                <p th:text="${n.message}">Message</p>
+                <div class="notice-footer">
+                    <small th:text="'Posted by ' + ${n.postedBy}">Admin</small>
+                    <small th:text="${#temporals.format(n.postedAt, 'dd MMM yyyy, hh:mm a')}">Date</small>
+                </div>
+                <div class="comments-section">
+                    <b>Comments (<span th:text="${#lists.size(n.comments)}">0</span>)</b>
+                    <div th:each="c : ${n.comments}" class="comment">
+                        <span class="comment-name" th:text="${c.empName}">Name</span>
+                        <span th:text="${c.comment}">Comment</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div th:replace="fragments/Admin Panel/footer :: adminFooter"></div>
+    </div>
+</div>
+
+<!-- ✅ Post Notice Modal -->
+<div id="modal" class="modal-overlay" style="display:none;">
+    <div class="modal-box">
+        <h2>Post New Notice</h2>
+        <input type="text" id="title" placeholder="Notice Title" />
+        <select id="category">
+            <option value="General">General</option>
+            <option value="Urgent">Urgent</option>
+        </select>
+        <textarea id="message" placeholder="Notice message..." rows="4"></textarea>
+        <div class="modal-btns">
+            <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+            <button class="btn-submit" onclick="submitNotice()">Post</button>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/JavaScript/Admin Panel/Notices.js}"></script>
+</body>
+</html>

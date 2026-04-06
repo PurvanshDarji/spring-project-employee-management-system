@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Feedback | EMS Admin</title>
+
+
+<link rel="stylesheet" th:href="@{/CSS/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/CSS/Admin Panel/Reports.css}">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- Admin Sidebar Fragment -->
+    <div th:replace="fragments/Admin Panel/header :: adminHeader"></div>
+
+    <!-- Main -->
+    <div class="main">
+
+        <div class="topbar">
+            <h1>Employee Feedback</h1>
+            <span>Complaints & Suggestions</span>
+        </div>
+
+        <div class="card">
+
+            <div class="actions">
+                <input type="text" id="search" placeholder="Search employee..." onkeyup="searchFeedback()">
+                <select onchange="filterType(this.value)">
+                    <option value="">All</option>
+                    <option value="Complaint">Complaint</option>
+                    <option value="Suggestion">Suggestion</option>
+                </select>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Employee</th>
+                        <th>Department</th>
+                        <th>Type</th>
+                        <th>Message</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="fbTable"></tbody>
+            </table>
+
+        </div>
+
+        <!-- Admin Footer Fragment -->
+        <div th:replace="fragments/Admin Panel/footer :: adminFooter"></div>
+
+    </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script th:src="@{/JavaScript/Admin Panel/Reports.js}"></script>
+
+</body>
+</html>

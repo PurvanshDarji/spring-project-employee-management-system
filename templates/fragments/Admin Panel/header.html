@@ -1,0 +1,95 @@
+<!-- ===== ADMIN SIDEBAR ===== -->
+<div th:fragment="adminHeader">
+
+    <div class="sidebar">
+
+        <!-- Logo -->
+        <div class="brand">
+        <img src="../images/logo.png" alt="Logo">
+        </div>
+
+        <!-- Menu -->
+        <a th:href="@{/admin/dashboard}" class="nav-link">
+            🏠 Dashboard
+        </a>
+
+        <a th:href="@{/admin/add-employee}" class="nav-link">
+            ➕ Add Employee
+        </a>
+
+        <a th:href="@{/admin/employees}" class="nav-link">
+            👨‍💼 Employees
+        </a>
+
+        <a th:href="@{/admin/departments}" class="nav-link">
+            🏢 Departments
+        </a>
+
+        <a th:href="@{/admin/salary}" class="nav-link">
+            💰 Salary
+        </a>
+
+        <a th:href="@{/admin/leave}" class="nav-link">
+            📝 Leave
+        </a>
+		
+		<a th:href="@{/admin/notices}" class="nav-link">
+            📝 Notice
+        </a>
+		
+		<a th:href="@{/admin/feedbacks}" class="nav-link">
+            💬 All Feedbacks
+        </a>
+
+        <a th:href="@{/admin/analytics}" class="nav-link">
+            📊 Analytics
+        </a>
+		
+        <a th:href="@{/admin/logs}" class="nav-link">
+            🛡 Logs
+        </a>
+
+        <a th:href="@{/}"
+style="
+margin-top:auto;
+display:flex;
+align-items:center;
+gap:8px;
+padding:12px 15px;
+border-radius:12px;
+text-decoration:none;
+color:white;
+background:#334155;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+"
+onmouseover="
+this.style.background='#ef4444';
+this.style.transform='translateX(5px)';
+document.getElementById('fallMan').style.transform=
+'translateY(25px) rotate(90deg)';
+"
+onmouseout="
+this.style.background='#334155';
+this.style.transform='translateX(0)';
+document.getElementById('fallMan').style.transform=
+'translateY(0) rotate(0deg)';
+"
+>
+
+🚪 Logout
+
+<span id="fallMan"
+style="
+display:inline-block;
+transition:0.5s;
+">
+🧍
+</span>
+
+</a>
+
+    </div>
+
+</div>

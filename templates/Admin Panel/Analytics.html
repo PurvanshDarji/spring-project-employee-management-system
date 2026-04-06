@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analytics Dashboard | EMS</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" th:href="@{/CSS/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/CSS/Admin Panel/Analytics.css}">
+</head>
+<body>
+
+<div class="layout">
+
+    <div th:replace="fragments/Admin Panel/header :: adminHeader"></div>
+
+    <div class="main">
+
+        <div class="topbar">
+            <h1>Analytics Dashboard</h1>
+            <span>Company Performance Overview</span>
+        </div>
+
+        <!-- ===== CARDS ===== -->
+        <div class="cards">
+            <div class="card blue">
+                <h2 th:text="${totalEmployees}">0</h2>
+                <p>Total Employees</p>
+            </div>
+            <div class="card green">
+                <h2 th:text="${todayPresent}">0</h2>
+                <p>Today Present</p>
+            </div>
+            <div class="card red">
+                <h2 th:text="${todayAbsent}">0</h2>
+                <p>Today Absent</p>
+            </div>
+            <div class="card purple">
+                <h2 th:text="${deptLabels.size()}">0</h2>
+                <p>Total Departments</p>
+            </div>
+        </div>
+
+        <!-- ===== CHARTS ===== -->
+        <div class="chart-grid">
+
+            <div class="chart-card">
+                <h3>Department Wise Employees</h3>
+                <canvas id="deptChart"></canvas>
+            </div>
+
+            <div class="chart-card">
+                <h3>Overall Attendance</h3>
+                <canvas id="attendancePie"></canvas>
+            </div>
+
+            <div class="chart-card">
+                <h3>Today's Attendance</h3>
+                <canvas id="todayChart"></canvas>
+            </div>
+
+            <div class="chart-card">
+                <h3>Attendance Status Split</h3>
+                <canvas id="statusChart"></canvas>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div th:replace="fragments/Admin Panel/footer :: adminFooter"></div>
+
+<!-- ✅ Thymeleaf se data JS mein pass karo -->
+<script th:inline="javascript">
+/*<![CDATA[*/
+let deptLabels    = /*[[${deptLabels}]]*/ [];
+let deptCounts    = /*[[${deptCounts}]]*/ [];
+let presentCount  = /*[[${presentCount}]]*/ 0;
+let absentCount   = /*[[${absentCount}]]*/ 0;
+let halfDayCount  = /*[[${halfDayCount}]]*/ 0;
+let todayPresent  = /*[[${todayPresent}]]*/ 0;
+let todayAbsent   = /*[[${todayAbsent}]]*/ 0;
+let totalEmp      = /*[[${totalEmployees}]]*/ 0;
+/*]]>*/
+</script>
+
+<script th:src="@{/JavaScript/Admin Panel/Analytics.js}"></script>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Management | EMS Admin</title>
+
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- DataTables CSS -->
+<link rel="stylesheet"
+href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<link rel="stylesheet" th:href="@{/CSS/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/CSS/Admin Panel/Employees.css}">
+
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <div th:replace="fragments/Admin Panel/header :: adminHeader"></div>
+
+    <div class="main">
+
+        <div class="topbar">
+            <h1>Employee Management</h1>
+            <span>Admin Panel</span>
+        </div>
+
+        <div class="card">
+
+            <div class="actions">
+                <a th:href="@{/admin/add-employee}">
+                    <button class="btn">+ Add Employee</button>
+                </a>
+            </div>
+
+            <table id="employeeTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Designation</th>
+                        <th>Phone</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="emp : ${employeeList}">
+                        <td th:text="${emp.id}"></td>
+                        <td th:text="${emp.name}"></td>
+                        <td th:text="${emp.department}"></td>
+                        <td th:text="${emp.designation}"></td>
+                        <td th:text="${emp.phone}"></td>
+                        <td>
+                            <button type="button"
+                                    th:onclick="'deleteEmployee(' + ${emp.id} + ')'">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div th:replace="fragments/Admin Panel/footer :: adminFooter"></div>
+
+    </div>
+</div>
+
+<script>
+$(document).ready(function () {
+    $('#employeeTable').DataTable({
+        pageLength: 5
+    });
+});
+
+function deleteEmployee(id) {
+
+    console.log("Deleting ID:", id);
+
+    if (!confirm("Delete this employee?")) {
+        return;
+    }
+
+    fetch("/api/employee/" + id, {
+        method: "DELETE"
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Server error " + response.status);
+        }
+        return response.text();
+    })
+    .then(data => {
+        alert("Employee Deleted Successfully");
+        location.reload();
+    })
+    .catch(error => {
+        console.error("Delete failed:", error);
+        alert("Delete failed. Check console.");
+    });
+}
+</script>
+
+</body>
+</html>

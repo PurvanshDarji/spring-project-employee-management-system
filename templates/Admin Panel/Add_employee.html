@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Employee | EMS Admin</title>
+
+
+<link rel="stylesheet" th:href="@{/CSS/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/CSS/Admin Panel/Add_employee.css}">
+</head>
+
+<body>
+
+<div class="layout">
+
+<div th:replace="fragments/Admin Panel/header :: adminHeader"></div>
+
+<div class="main">
+
+<div class="topbar">
+<h1>Add Employee</h1>
+<span>Employee Management System</span>
+</div>
+
+<div class="grid">
+
+<!-- ================= FORM CARD ================= -->
+<div class="card">
+<h2>Employee Entry</h2>
+
+<!-- SUCCESS MESSAGE -->
+<div th:if="${param.success}" class="alert alert-success">
+Employee Saved Successfully!
+</div>
+
+<!-- FORM START -->
+<form th:action="@{/admin/employees/save}"
+      th:object="${employee}"
+      method="post">
+
+<!-- NAME -->
+<div class="form-group">
+<label>Full Name</label>
+
+<input type="text"
+       th:field="*{name}"
+       class="form-control">
+
+<div class="text-danger"
+     th:if="${#fields.hasErrors('name')}"
+     th:errors="*{name}">
+</div>
+
+</div>
+
+<!-- DEPARTMENT -->
+<div class="form-group">
+<label>Department</label>
+
+<select th:field="*{department}" class="form-control">
+<option value="">Select</option>
+<option value="IT">IT</option>
+<option value="HR">HR</option>
+<option value="Finance">Finance</option>
+<option value="Marketing">Marketing</option>
+</select>
+
+<div class="text-danger"
+     th:if="${#fields.hasErrors('department')}"
+     th:errors="*{department}">
+</div>
+
+</div>
+
+<!-- DESIGNATION -->
+<div class="form-group">
+<label>Designation</label>
+
+<input type="text"
+       th:field="*{designation}"
+       class="form-control">
+
+<div class="text-danger"
+     th:if="${#fields.hasErrors('designation')}"
+     th:errors="*{designation}">
+</div>
+
+</div>
+
+<!-- PASSWORD -->
+<div class="form-group">
+<label>Password</label>
+
+<input type="password"
+       th:field="*{password}"
+       class="form-control">
+
+<div class="text-danger"
+     th:if="${#fields.hasErrors('password')}"
+     th:errors="*{password}">
+</div>
+
+</div>
+
+<!-- PHONE -->
+<div class="form-group">
+<label>Contact</label>
+
+<input type="text"
+       th:field="*{phone}"
+       class="form-control">
+
+<div class="text-danger"
+     th:if="${#fields.hasErrors('phone')}"
+     th:errors="*{phone}">
+</div>
+
+</div>
+
+<button type="submit"
+class="btn btn-primary w-100 mt-3">
+
+Save Employee
+
+</button>
+
+</form>
+<!-- FORM END -->
+
+</div>
+
+<!-- ================= TABLE CARD ================= -->
+<div class="card">
+
+<h2>Employee List</h2>
+
+<div class="table-wrapper">
+
+<table class="table table-bordered">
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Full Name</th>
+<th>Department</th>
+<th>Designation</th>
+<th>Contact</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr th:each="emp : ${employees}">
+<td th:text="${emp.id}"></td>
+<td th:text="${emp.name}"></td>
+<td th:text="${emp.department}"></td>
+<td th:text="${emp.designation}"></td>
+<td th:text="${emp.phone}"></td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+<div th:replace="fragments/Admin Panel/footer :: adminFooter"></div>
+
+</div>
+
+</div>
+
+</body>
+</html>

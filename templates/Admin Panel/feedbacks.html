@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Feedback Management</title>
+    <link rel="stylesheet" th:href="@{/CSS/Admin panel/Feedback.css}">
+</head>
+<body>
+    <!-- 🔥 COMPLETE LAYOUT -->
+    <div class="layout">
+        
+        <!-- 🔥 SIDEBAR (LEFT SIDE - Fixed) -->
+        <div th:replace="fragments/Admin Panel/header :: adminHeader"></div>
+
+        <!-- 🔥 MAIN CONTENT (RIGHT SIDE) -->
+        <div class="main">
+            <!-- Topbar -->
+            <div class="topbar">
+                <div class="topbar-left">
+                    <h2>📝 Employee Feedbacks 
+                        <span th:text="'(' + ${totalFeedbacks} + ')'"> (0)</span>
+                    </h2>
+                </div>
+                <div class="topbar-right">
+                    <span class="badge" th:text="${totalFeedbacks} + ' total'">0 total</span>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="feedback-stats">
+                <div class="stat-card">
+                    <h3 th:text="${totalFeedbacks}">0</h3>
+                    <p>Total Feedbacks</p>
+                </div>
+                <div class="stat-card">
+                    <h3 th:text="${feedbacks != null ? #lists.size(feedbacks) : 0}">0</h3>
+                    <p>Recent</p>
+                </div>
+            </div>
+
+            <!-- Table Card -->
+            <div class="card">
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Employee</th>
+                                <th>Dept</th>
+                                <th>Subject</th>
+                                <th>Feedback</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="feedbacksTable">
+                            <tr><td colspan="6">🔄 Loading feedbacks...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast"></div>
+
+    <!-- JavaScript -->
+    <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+
+        // 🔥 FIRST: admin session set karo
+        await fetch('/api/feedback/set-admin');
+
+        // 🔥 THEN: data load karo
+        loadFeedbacks();
+    });
+        async function loadFeedbacks() {
+            try {
+            	const response = await fetch('/api/feedback/all', {
+            	    credentials: 'include'   // 🔥 THIS IS THE FIX
+            	});
+                const feedbacks = await response.json();
+                renderFeedbacks(feedbacks);
+            } catch (error) {
+                document.getElementById('feedbacksTable').innerHTML = 
+                    '<tr><td colspan="6" style="color:#ef4444;">❌ Error loading feedbacks</td></tr>';
+            }
+        }
+        
+        function renderFeedbacks(feedbacks) {
+            const tbody = document.getElementById('feedbacksTable');
+            if (feedbacks.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" style="text-align:center; padding:40px; color:#64748b;">
+                            📭 No feedbacks submitted yet
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            tbody.innerHTML = feedbacks.slice(0, 50).map(fb => `
+                <tr>
+                    <td style="font-weight:700; color:#6366f1;">${fb.id}</td>
+                    <td>
+                        <strong>${fb.empName}</strong><br>
+                        <small style="color:#64748b;">${fb.empId}</small>
+                    </td>
+                    <td>
+                        <span style="background:#dbeafe; color:#6366f1; padding:4px 12px; border-radius:20px; font-size:12px;">
+                            ${fb.department}
+                        </span>
+                    </td>
+                    <td style="font-weight:600;">${fb.subject}</td>
+                    <td style="color:#475569; max-width:250px;">${fb.message.substring(0, 60)}${fb.message.length > 60 ? '...' : ''}</td>
+                    <td style="color:#64748b;">
+                        <small>${new Date().toLocaleDateString('en-IN')}</small>
+                    </td>
+                </tr>
+            `).join('');
+        }
+        
+        setInterval(loadFeedbacks, 30000);
+    </script>
+</body>
+</html>

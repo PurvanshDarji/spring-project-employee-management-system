@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Profile | EMS</title>
+
+<link rel="stylesheet"
+th:href="@{/CSS/User Panel/Employ_Profile.css}">
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+<a th:href="@{/employee/dashboard}"
+class="back-btn">← Dashboard</a>
+
+<div class="logo">EMS Dashboard</div>
+
+<div class="user">
+<span th:text="${employee.name}"></span>
+•
+EMP<span th:text="${employee.id}"></span>
+</div>
+
+</div>
+
+<div class="container">
+
+<div class="profile-card">
+
+<h1>My Profile</h1>
+
+<!-- NAME -->
+<div class="field">
+<label>Full Name</label>
+
+<input type="text"
+id="name"
+th:value="${employee.name}"
+disabled>
+</div>
+
+<!-- PHONE -->
+<div class="field">
+<label>Phone</label>
+
+<input type="tel"
+id="phone"
+th:value="${employee.phone}"
+disabled>
+</div>
+
+<!-- DEPARTMENT (LOCKED) -->
+<div class="field">
+<label>Department</label>
+
+<input type="text"
+id="department"
+th:value="${employee.department}"
+disabled>
+</div>
+
+<!-- PASSWORD -->
+<div class="field">
+<label>Password</label>
+
+<input type="password"
+id="password"
+th:value="${employee.password}"
+disabled>
+</div>
+
+<div class="buttons">
+
+<button id="editBtn">
+Edit Profile
+</button>
+
+<button id="saveBtn"
+class="save"
+style="display:none;">
+Save Changes
+</button>
+
+<button id="cancelBtn"
+class="cancel"
+style="display:none;">
+Cancel
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<div th:replace="~{fragments/User Panel/footer :: userFooter}"></div>
+
+<script
+th:src="@{/JavaScript/User Panel/Employ_Profile.js}">
+</script>
+
+</body>
+</html>

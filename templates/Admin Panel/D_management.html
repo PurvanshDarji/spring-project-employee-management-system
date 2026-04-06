@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Department Management | EMS Admin</title>
+
+<link rel="stylesheet" th:href="@{/CSS/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/CSS/Admin Panel/D_management.css}">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- Admin Sidebar Fragment -->
+    <div th:replace="fragments/Admin Panel/header :: adminHeader"></div>
+
+    <!-- Main -->
+    <div class="main">
+
+        <div class="topbar">
+            <h1>Department Management</h1>
+            <div>Admin Panel</div>
+        </div>
+
+        <div class="grid">
+
+            <!-- Add/Edit Department Form -->
+            <div class="card">
+                <h2 id="formTitle">Add Department</h2>
+                <input type="hidden" id="editId" value="">
+                
+                <div class="form-group">
+                    <label>Department Name</label>
+                    <input type="text" id="dname" placeholder="Enter department name" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Department Head</label>
+                    <select id="dhead" required>
+                        <option value="">Select Department Head</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="ddesc" rows="3" placeholder="Enter description"></textarea>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn btn-primary" onclick="saveDepartment()">Save Department</button>
+                    <button type="button" class="btn btn-secondary" onclick="clearForm()" id="cancelBtn" style="display:none;">Cancel</button>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="card">
+                <h2>Department List</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Department</th>
+                            <th>Head</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="deptTable">
+                        <!-- ✅ Thymeleaf will populate initially -->
+                        <tr th:each="dept : ${departments}">
+                            <td th:text="${dept.id}"></td>
+                            <td th:text="${dept.name}"></td>
+                            <td th:text="${dept.headName}"></td>
+                            <td th:text="${dept.description}"></td>
+                            <td>
+                                <!-- ✅ EDIT Button -->
+                                <button class="btn btn-primary btn-sm" th:onclick="'editDept(' + ${dept.id} + ')'">
+    Edit
+</button>
+                                <!-- ✅ DELETE Button -->
+                                <a th:href="@{'/admin/delete-department/' + ${dept.id}}"
+                                   onclick="return confirm('Are you sure you want to delete this department?');"
+                                   class="btn btn-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <!-- Admin Footer Fragment -->
+        <div th:replace="fragments/Admin Panel/footer :: adminFooter"></div>
+
+    </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script th:src="@{/JavaScript/Admin Panel/D_management.js}"></script>
+
+</body>
+</html>

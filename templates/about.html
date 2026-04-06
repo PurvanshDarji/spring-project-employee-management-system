@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | EMS System</title>
+    <link rel="stylesheet" th:href="@{/CSS/about.css}">
+</head>
+
+<body>
+    <!-- Background Elements -->
+    <div class="bg-image"></div>
+    <div class="bg-overlay"></div>
+
+    <!-- Header Fragment -->
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="hero reveal">
+        <h1>About <span>EMS System</span></h1>
+        <p>
+            Employee Management System (EMS) is a premium web-based platform designed to streamline 
+            workforce operations, enhance productivity, and deliver a seamless experience 
+            for both employees and administrators.
+        </p>
+    </div>
+
+    <div class="content">
+        <div class="card-grid">
+            <div class="card reveal">
+                <h3>🎯 Project Objective</h3>
+                <p>Develop a modern, secure, and user-friendly employee management platform with advanced features.</p>
+            </div>
+
+            <div class="card reveal">
+                <h3>🚀 Our Mission</h3>
+                <p>Deliver intelligent, scalable digital solutions that transform workplace productivity.</p>
+            </div>
+
+            <div class="card reveal">
+                <h3>👁 Our Vision</h3>
+                <p>Create a fully digitized, automated workplace ecosystem for the future.</p>
+            </div>
+
+            <div class="card reveal">
+                <h3>🛠 Technologies Used</h3>
+                <p>HTML5, CSS3, JavaScript, Thymeleaf, Spring Boot, Responsive Design, Glassmorphism UI.</p>
+            </div>
+
+            <div class="card reveal">
+                <h3>🔐 System Security</h3>
+                <p>Role-based access control, secure authentication, data encryption protection.</p>
+            </div>
+
+            <div class="card reveal">
+                <h3>📚 Academic Purpose</h3>
+                <p>BCA Semester 4 project showcasing real-world web development skills.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="brand-section reveal">
+        <div class="brand-box">
+            <h2>Brand Ambassador</h2>
+            <p>Project Presented & Managed by <span>Rahul Sharma</span></p>
+            <p>BCA Semester 4 | SMM College Project</p>
+            <p class="mt-3">✨ Built with Passion & Innovation ✨</p>
+        </div>
+    </div>
+
+    <!-- Footer Fragment -->
+    <div th:replace="fragments/footer :: footer"></div>
+
+    <!-- Popup -->
+    <div class="popup-overlay" id="popup">
+        <div class="popup-box">
+            <h3>⚠️ Login Required</h3>
+            <p>Please login first to access protected features.</p>
+            <a href="/login" class="btn-popup">🔐 Login Now</a>
+        </div>
+    </div>
+
+    <!-- External JS -->
+    <script th:src="@{/JavaScript/about.js}"></script>
+</body>
+</html>

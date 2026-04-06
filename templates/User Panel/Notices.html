@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Notice Board | Employee</title>
+<link rel="stylesheet" th:href="@{/CSS/User Panel/Notices.css}">
+</head>
+<body>
+
+<div class="layout">
+    <div th:replace="fragments/User Panel/header :: userHeader"></div>
+
+    <div class="main">
+        <div class="topbar">
+            <h2>Notice Board</h2>
+            <strong th:text="${empName}">Employee</strong>
+        </div>
+
+        <div class="notices-grid">
+            <div th:each="n : ${notices}" class="notice-card"
+                 th:classappend="${n.category == 'Urgent'} ? ' urgent' : ' general'">
+                <div class="notice-header">
+                    <span class="badge" th:text="${n.category}">General</span>
+                </div>
+                <h3 th:text="${n.title}">Title</h3>
+                <p th:text="${n.message}">Message</p>
+                <div class="notice-footer">
+                    <small th:text="'Posted by ' + ${n.postedBy}">Admin</small>
+                    <small th:text="${#temporals.format(n.postedAt, 'dd MMM yyyy, hh:mm a')}">Date</small>
+                </div>
+
+                <!-- Comments -->
+                <div class="comments-section">
+                    <b>Comments (<span th:text="${#lists.size(n.comments)}">0</span>)</b>
+                    <div th:each="c : ${n.comments}" class="comment">
+                        <span class="comment-name" th:text="${c.empName}">Name</span>
+                        <span th:text="${c.comment}">Comment</span>
+                    </div>
+                    <!-- Comment box -->
+                    <div class="comment-input">
+                        <input type="text"
+                               th:id="'comment-' + ${n.id}"
+                               placeholder="Write a comment..."/>
+                        <button th:onclick="'addComment(' + ${n.id} + ')'">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div th:replace="fragments/User Panel/footer :: userFooter"></div>
+    </div>
+</div>
+
+<script th:src="@{/JavaScript/User Panel/Notices.js}"></script>
+</body>
+</html>

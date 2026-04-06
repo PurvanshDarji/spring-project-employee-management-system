@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Management System | EMS</title>
+
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" th:href="@{/CSS/index.css}">
+</head>
+
+<body>
+<!-- Floating Particles (NEW - Eye-catching) -->
+<div class="particles">
+    <div class="particle" style="--delay: 0s; --duration: 15s;"></div>
+    <div class="particle" style="--delay: 2s; --duration: 20s;"></div>
+    <div class="particle" style="--delay: 4s; --duration: 18s;"></div>
+    <div class="particle" style="--delay: 6s; --duration: 22s;"></div>
+    <div class="particle" style="--delay: 1s; --duration: 16s;"></div>
+</div>
+
+<!-- Background Image -->
+<div class="bg-image"></div>
+<div class="bg-overlay"></div>
+
+<!-- Header Fragment -->
+<div th:replace="fragments/header :: header"></div>
+
+<!-- Enhanced Hero Section -->
+<div class="hero">
+    <div class="hero-badge">🚀 New Launch 2024</div>
+    <div class="hero-text">
+        <div class="hero-subtitle">The Ultimate</div>
+        <h1>Modern <span>Employee Management</span></h1>
+        <p class="hero-desc">A complete digital platform to manage employee profiles, attendance, salary, leave requests, and feedback professionally. <strong>Trusted by 500+ companies.</strong></p>
+        
+        <!-- NEW: Feature Highlights -->
+        <div class="hero-features">
+            <div class="feature-highlight">
+                <span class="highlight-icon">✅</span>
+                <span>Real-time Analytics</span>
+            </div>
+            <div class="feature-highlight">
+                <span class="highlight-icon">⚡</span>
+                <span>Mobile Responsive</span>
+            </div>
+            <div class="feature-highlight">
+                <span class="highlight-icon">🔒</span>
+                <span>Secure & Private</span>
+            </div>
+        </div>
+        
+        <div class="hero-buttons">
+            <a th:href="@{/login}" class="cta primary">🚀 Launch System</a>
+            <a href="#features" class="cta secondary">📱 View Demo</a>
+        </div>
+        
+        <!-- NEW: Trust Indicators -->
+        <div class="trust-indicators">
+            <span>⭐ 4.9/5 Rating</span>
+            <span>•</span>
+            <span>500+ Active Users</span>
+        </div>
+    </div>
+    <div class="hero-img">
+        <div class="img-container">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="EMS Dashboard">
+            <!-- NEW: Floating Cards -->
+            <div class="floating-card">👥 Profiles</div>
+            <div class="floating-card delay-1">💰 Salary</div>
+            <div class="floating-card delay-2">📅 Attendance</div>
+        </div>
+    </div>
+</div>
+
+<!-- NEW: Animated Stats Section -->
+<div class="stats">
+    <div class="stat-card">
+        <div class="stat-number" id="s1">0</div>
+        <div class="stat-label">👥 Employees Managed</div>
+        <div class="stat-progress">
+            <div class="progress-bar" style="width: 85%"></div>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number" id="s2">0</div>
+        <div class="stat-label">📝 Leave Requests</div>
+        <div class="stat-progress">
+            <div class="progress-bar" style="width: 92%"></div>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number" id="s3">0</div>
+        <div class="stat-label">📊 Accuracy Rate</div>
+        <div class="stat-progress">
+            <div class="progress-bar success" style="width: 98%"></div>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number" id="s4">0</div>
+        <div class="stat-label">🕐 Availability</div>
+        <div class="stat-progress">
+            <div class="progress-bar" style="width: 99.9%"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Enhanced Features -->
+<div class="features" id="features">
+    <h2>✨ <span>Core Features</span></h2>
+    <p class="section-subtitle">Everything you need to manage your workforce efficiently</p>
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="feature-icon">👤</div>
+            <h3>Employee Profile</h3>
+            <p>Complete profile management with photo, documents & history</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">💰</div>
+            <h3>Salary Management</h3>
+            <p>Automated payroll, deductions & payslips generation</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📅</div>
+            <h3>Leave Workflow</h3>
+            <p>Smart leave approval with calendar integration</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">✅</div>
+            <h3>Attendance Tracking</h3>
+            <p>Biometric & GPS attendance with real-time reports</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">💬</div>
+            <h3>Feedback System</h3>
+            <p>Anonymous feedback & performance reviews</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">⚙️</div>
+            <h3>Admin Control</h3>
+            <p>Complete admin dashboard with analytics</p>
+        </div>
+    </div>
+</div>
+
+<!-- NEW: Testimonials Section -->
+<div class="testimonials">
+    <h2>What Our Clients Say</h2>
+    <div class="testimonial-grid">
+        <div class="testimonial-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"Transformed our HR completely! Super easy to use."</p>
+            <div class="author">
+                <div class="author-avatar">RS</div>
+                <div>
+                    <strong>Rohit Sharma</strong><br>
+                    <span>HR Manager, TechCorp</span>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"Salary processing time reduced by 80%. Amazing!"</p>
+            <div class="author">
+                <div class="author-avatar">HP</div>
+                <div>
+                    <strong>Hardik Pandya</strong><br>
+                    <span>Finance Lead, GrowEasy</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Enhanced Workflow -->
+<div class="workflow">
+    <h2>🔄 <span>Simple Workflow</span></h2>
+    <div class="flow">
+        <div class="flow-box active">
+            <div class="flow-number">1️⃣</div>
+            <span>Login → Dashboard</span>
+        </div>
+        <div class="flow-box">
+            <div class="flow-number">2️⃣</div>
+            <span>Profile & Salary</span>
+        </div>
+        <div class="flow-box">
+            <div class="flow-number">3️⃣</div>
+            <span>Attendance & Leave</span>
+        </div>
+        <div class="flow-box">
+            <div class="flow-number">4️⃣</div>
+            <span>Feedback → Admin</span>
+        </div>
+    </div>
+</div>
+
+<!-- Enhanced Brand Section -->
+<div class="brand-section">
+    <div class="brand-box">
+        <div class="brand-badge">🎓 BCA Project</div>
+        <h2>🏆 Brand Ambassador</h2>
+        <p>Project Presented & Managed by <strong>Purvanhs darji and Group</strong></p>
+        <p>BCA Semester 4 </p>
+        <div class="brand-links">
+            <a th:href="@{/contact}" class="social-link">📧 Contact</a>
+            <a href="#" class="social-link">💼 LinkedIn</a>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Fragment -->
+<div th:replace="fragments/footer :: footer"></div>
+
+<!-- Popup -->
+<div class="popup-overlay" id="popup">
+    <div class="popup-box">
+        <h3>🔐 Login Required</h3>
+        <p>Please login first to access feedback panel.</p>
+        <button onclick="closePopup()">OK</button>
+    </div>
+</div>
+
+<script th:src="@{/JavaScript/index.js}"></script>
+</body>
+</html>
