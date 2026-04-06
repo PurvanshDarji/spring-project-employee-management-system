@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "emsbot-qpqu",
+  "private_key_id": "75e5ae5cb91e54d44a53c77d21d7ba7f9a54e849",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDJqgjvS1ExZKuq\nmBkGg2qT40kJKS7lK4RPrrKZm6MYZBCQsuC7+9q+Alsvw50Ee6m7IWiVIjArBJlE\nU+pfVAt+wHd1AQh6rq9fvVSqLJbZw3V5271H4j29Z3JvkWPJfdGtyRThiLf5khyg\nCW5t2UgqTn9bofugalSTzM7JmWC4uO7WVbH825Z3gUCtXauG6u1LNHOnNsnEcsSl\nQ3IRDxiiGol17ZgYdjGYwU68zyG5RtoUuHG9u3SXHC4VG+ioxmiA061i1pW+cgfm\n506bc4DBAg04XwQ0YuN570Ra0XpnWFQ6rKEwpnnDMMI5/z0SvqJoduY6mLqydvrK\nDYBejZzjAgMBAAECggEAIzptWiQNmHPOGzx7rqwZW6FKOmvz0bvS3rqVX4kVKicc\nz7I32Q7rjOLLfCIPVV+m7FYvN1IkGPeyMIH6QNHlOiy0EX/vM8M9RpvD5QBqD7t5\n06JDxAFtKJ+gGYZL6MBudw3X9HgWL2ZLUtei71SUKzPQQrkexEye3rzZ6NS+1TXF\nslPz2p5aS2EcsD3f2/MNjvkheTlt0/UrRO5UztTSoOWeuc8dszWH3x2PdzfrNGAo\ncAqVHEnZTnf8cJdCsDFRxptn3pOsV06ubTKnRsCCRpEOUPmIr70oWXlzKKZujGt2\nmj8b9IdYSi5gWsjnQFlidrKTOa9KQusTmQloA8CutQKBgQDqqIiOEuiKaFf/Ts0g\nP/gDB9oXIRHjkuTMhI8DvUz/ztaxrxO2hHe+6GThwGee0gn+yF0HmVWHvryw6b3n\nFPaigXTaOhY6pTFrjFVw0eZAWP45pBXWLystwNFvYorQG9pFnoySysuDdiCtoVV4\npw2DWoYVFodSHA8XnRv78tgijwKBgQDcAU+Oim4DIco7ER2pgIIR8S7nbDJFGKIf\nZDXfnZdgjfC5aX9XW4E/Nenm6g9JpwrW2A6Z5aG3ZTIy4mjyFQ7dn6ONSugpCGRF\ndiwz3j2RSM2AxpcdjnvxR1kkOedQPT+JAmN4XRVFwqIekNS+i5Y5pqpezaGVFM4W\niUh6Y2W6bQKBgQCeQpwWddovvr/aiKL/pST3pkwIXV1bRq7Y4G4z73AG9tEFdTau\nWhkIwGOJfeJk0vO6yhc0EM4GhzVre7mAKDtOzlCo/ZQQaWkzR6o4NNg9fce3yFqR\n4a4VZX3ayXMleCN14MCeH/ex6fGQKMckYEZU2LCleFQ7pIDpRCSjf90VMQKBgDjx\nsejgFbeD0HdXZ8kOtRv1xEEsNRrDVHsxkewuOxdHxe4Hy2kOCzcUOlWFca2LqfeP\n9r+Iu0Hf1I1tIuK95pogjtGseMjeHi4Id0p5lI/9OwvA2y5QSe5anE0PG7seD0rk\nLmDiHvZueU3WCOrE8H49kE13hgIzX2Bf6j2baqJFAoGACg23qC1UkhUTKgdjFS2t\nktgiJ6NzfgW8fFpHAm1YZ08YREVJww46sL3pmT1qLhuHXYEx0Zc7pmvScjwMCUM3\nhTFzl/qcJ+DHOjWwmW7ybSxTbUJ3sKKejZY0iAWK8du+I0HKymKV3qpGc1f5aaqm\nIEq23AUterupyqP/EFYQ/rQ=\n-----END PRIVATE KEY-----\n",
+  "client_email": "ems-dialogflow@emsbot-qpqu.iam.gserviceaccount.com",
+  "client_id": "108885425328797216566",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ems-dialogflow%40emsbot-qpqu.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
