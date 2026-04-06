@@ -1,0 +1,259 @@
+:root{
+    --primary:#6366f1;
+    --secondary:#22c55e;
+    --dark:#0f172a;
+    --muted:#64748b;
+    --bg:#f4f7fb;
+    --glass:rgba(255,255,255,0.75);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url('https://images.unsplash.com/photo-1700813787846-48f44e9e1026');
+    background-size: cover;
+    background-position: center;
+}
+
+.layout{
+    display:flex;
+    min-height:100vh;
+}
+
+/* Sidebar */
+.sidebar{
+    width:240px;
+    background:linear-gradient(180deg,#4f46e5,#6366f1);
+    padding:25px 15px;
+    display:flex;
+    flex-direction:column;
+    box-shadow:6px 0 25px rgba(0,0,0,0.12);
+}
+
+.brand{
+    color:#fff;
+    text-align:center;
+    margin-bottom:35px;
+    font-size:24px;
+    font-weight:800;
+}
+
+.nav-link{
+    color:#fff;
+    text-decoration:none;
+    padding:13px 15px;
+    border-radius:14px;
+    margin-bottom:8px;
+    transition:0.35s;
+}
+
+.nav-link:hover{
+    background:rgba(255,255,255,0.18);
+    transform:translateX(8px);
+}
+
+.logout{ margin-top:auto; }
+
+/* Main */
+.main{
+    flex:1;
+    padding:30px 40px;
+}
+
+/* Topbar */
+.topbar{
+    background:var(--glass);
+    backdrop-filter: blur(12px);
+    padding:16px 25px;
+    border-radius:18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* Cards */
+.cards{
+    margin-top:30px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:#fff;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.08);
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card h3{
+    font-size:32px;
+    color:var(--primary);
+}
+
+/* Welcome */
+.welcome{
+    margin-top:35px;
+    background:#fff;
+    border-radius:24px;
+    padding:35px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.10);
+}
+
+/* Footer */
+.footer{
+    margin-top:35px;
+    text-align:center;
+    font-size:13px;
+    color:var(--muted);
+}
+.logoutButton {
+  --figure-duration: 100ms;
+  --walking-duration: 100ms;
+
+  background: none;
+  border: 0;
+  color: #f4f7ff;
+  cursor: pointer;
+  display: block;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  outline: none;
+  padding: 0 0 0 20px;
+  perspective: 100px;
+  position: relative;
+  text-align: left;
+  width: 130px;
+}
+
+.logoutButton::before {
+  background-color: #1f2335;
+  border-radius: 5px;
+  content: '';
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: transform 50ms ease;
+  width: 100%;
+  z-index: 2;
+}
+
+.logoutButton:hover .door {
+  transform: rotateY(20deg);
+}
+
+.logoutButton:active::before {
+  transform: scale(.96);
+}
+
+.logoutButton:active .door {
+  transform: rotateY(28deg);
+}
+
+.logoutButton.clicked .door {
+  transform: rotateY(35deg);
+}
+
+.logoutButton.door-slammed .door {
+  transform: none;
+  transition: transform 100ms ease-in 250ms;
+}
+
+.logoutButton.falling {
+  animation: shake 200ms linear;
+}
+
+.logoutButton.falling .bang {
+  animation: flash 300ms linear;
+}
+
+.logoutButton.falling .figure {
+  animation: spin 1000ms infinite linear;
+  bottom: -1080px;
+  opacity: 0;
+  right: 1px;
+  z-index: 1;
+}
+
+.button-text {
+  color: #f4f7ff;
+  font-weight: 500;
+  position: relative;
+  z-index: 10;
+}
+
+svg {
+  display: block;
+  position: absolute;
+}
+
+.figure {
+  bottom: 5px;
+  fill: #4371f7;
+  right: 18px;
+  width: 30px;
+  z-index: 4;
+  transition: transform 200ms ease;
+}
+
+.door,
+.doorway {
+  bottom: 4px;
+  fill: #f4f7ff;
+  right: 12px;
+  width: 32px;
+}
+
+.door {
+  transform: rotateY(20deg);
+  transform-origin: 100% 50%;
+  transform-style: preserve-3d;
+  transition: transform 200ms ease;
+  z-index: 5;
+}
+
+.door path {
+  fill: #4371f7;
+  stroke: #4371f7;
+  stroke-width: 4;
+}
+
+.doorway {
+  z-index: 3;
+}
+
+.bang {
+  opacity: 0;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg) scale(0.94); }
+  to { transform: rotate(359deg) scale(0.94); }
+}
+
+@keyframes shake {
+  0% { transform: rotate(-1deg); }
+  50% { transform: rotate(2deg); }
+  100% { transform: rotate(-1deg); }
+}
+
+@keyframes flash {
+  0% { opacity: 0.4; }
+  100% { opacity: 0; }
+}

@@ -1,0 +1,286 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'DM Sans',sans-serif;
+}
+
+body{
+background:#e5e5e5;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* Replace your body CSS with this */
+body{
+    position:relative;
+    min-height:100vh;
+    overflow:hidden;
+    margin:0;
+    padding:20px 0;
+}
+
+/* Background Image */
+.bg-image{
+    position:fixed;
+    top:0;left:0;width:100%;height:100%;
+    background:url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover;
+    z-index:-2;
+    animation:bgPan 25s ease-in-out infinite;
+}
+
+/* Glass Overlay */
+.bg-overlay{
+    position:fixed;
+    top:0;left:0;width:100%;height:100%;
+    background:linear-gradient(135deg,rgba(248,250,252,0.95) 0%,rgba(241,245,249,0.92) 50%,rgba(255,255,255,0.88) 100%);
+    backdrop-filter:blur(2px);
+    z-index:-1;
+}
+
+/* Animation */
+@keyframes bgPan{
+    0%,100%{transform:scale(1) rotate(0deg);}
+    33%{transform:scale(1.03) rotate(1deg);}
+    66%{transform:scale(1.01) rotate(-1deg);}
+}
+
+.container{
+width:1100px;
+height:650px;
+background:#fff;
+border-radius:25px;
+display:flex;
+overflow:hidden;
+box-shadow:0 25px 60px rgba(0,0,0,0.15);
+}
+
+/* EYES */
+.eyes{
+position:absolute;
+top:35px;
+width:100%;
+display:flex;
+justify-content:center;
+gap:14px;
+}
+
+.eyes span{
+width:10px;
+height:10px;
+background:#fff;
+border-radius:50%;
+position:relative;
+}
+
+.eyes span::after{
+content:"";
+width:4px;
+height:4px;
+background:#000;
+border-radius:50%;
+position:absolute;
+top:3px;
+left:3px;
+}
+
+/* MOUTH */
+.mouth{
+position:absolute;
+top:60px;
+left:50%;
+width:22px;
+height:6px;
+background:rgba(0,0,0,.5);
+border-radius:0 0 20px 20px;
+transform:translateX(-50%);
+}
+
+/* LEFT */
+.left-panel{
+width:50%;
+background:#f2f2f2;
+position:relative;
+display:flex;
+justify-content:center;
+align-items:flex-end;
+}
+
+.shapes{
+position:relative;
+width:100%;
+height:100%;
+}
+
+.shape{
+position:absolute;
+bottom:0;
+}
+
+/* Purple */
+.purple{
+width:130px;
+height:280px;
+background:linear-gradient(180deg,#7c3aed,#6d28d9);
+left:38%;
+}
+
+/* Black */
+.black{
+width:110px;
+height:180px;
+background:#111;
+left:55%;
+}
+
+/* Yellow */
+.yellow{
+width:130px;
+height:130px;
+background:#facc15;
+border-radius:60px 60px 0 0;
+left:65%;
+}
+
+/* Orange */
+.orange{
+width:260px;
+height:120px;
+background:#f97316;
+border-radius:100px 100px 0 0;
+left:20%;
+}
+
+/* RIGHT */
+.right-panel{
+width:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:60px;
+}
+
+.login-box{
+width:100%;
+max-width:400px;
+}
+
+.login-box h1{
+font-size:32px;
+margin-bottom:10px;
+}
+
+.login-box p{
+color:#666;
+margin-bottom:30px;
+}
+
+/* FORM */
+.form-group{
+margin-bottom:25px;
+}
+
+.form-group label{
+display:block;
+margin-bottom:6px;
+font-weight:500;
+}
+
+.form-group input{
+width:100%;
+border:none;
+border-bottom:1px solid #ccc;
+padding:8px 0;
+font-size:15px;
+outline:none;
+}
+
+.password-field{
+position:relative;
+}
+
+.toggle{
+position:absolute;
+right:0;
+bottom:8px;
+cursor:pointer;
+}
+
+.row{
+display:flex;
+justify-content:space-between;
+margin:20px 0;
+font-size:14px;
+}
+
+.row a{
+color:#2563eb;
+text-decoration:none;
+}
+
+button{
+width:100%;
+padding:15px;
+border:none;
+border-radius:40px;
+background:#000;
+color:#fff;
+font-size:16px;
+cursor:pointer;
+margin-top:10px;
+}
+
+.signup{
+margin-top:25px;
+text-align:center;
+}
+
+.signup a{
+color:#2563eb;
+text-decoration:none;
+}
+
+.error{
+display:none;
+color:red;
+margin-top:10px;
+text-align:center;
+}
+
+/* Add these to your existing login.css */
+
+/* Footer */
+.footer{
+    position:relative;z-index:10;padding:20px 40px;
+    background:var(--glass);backdrop-filter:blur(20px);
+    text-align:center;color:var(--text-light);font-size:14px;
+    border-top:1px solid rgba(255,255,255,0.2);margin-top:20px;
+}
+
+/* Home Button */
+.home-btn{
+    display:block;width:100%;margin:15px 0;text-decoration:none;
+}
+.home-btn button{
+    width:100%;padding:14px;border:none;border-radius:20px;
+    background:linear-gradient(135deg,#6b7280,#4b5563);color:#fff;
+    font-size:15px;font-weight:600;cursor:pointer;transition:all .3s ease;
+    box-shadow:0 6px 20px rgba(75,85,99,0.3);
+}
+.home-btn button:hover{
+    transform:translateY(-2px);box-shadow:0 12px 30px rgba(75,85,99,0.4);
+}
+
+/* Responsive Footer */
+@media(max-width:900px){
+    .footer{padding:15px 20px;font-size:13px;}
+}
+
+/* Existing animations */
+@keyframes bgPan{
+    0%,100%{transform:scale(1) rotate(0deg);}
+    33%{transform:scale(1.03) rotate(1deg);}
+    66%{transform:scale(1.01) rotate(-1deg);}
+}
